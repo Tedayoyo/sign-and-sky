@@ -1,0 +1,32 @@
+# The manifest of this extension: what the App Store registers, what the SDK reads
+# at start-up. No secret ever belongs here. Every key is explained in
+# docs/manifest.md of the SDK; `appext manifest check` tells you what is wrong.
+
+[extension]
+id = "sign-and-sky"
+name = "Sign and Sky"
+description = "Voice AI that tests farmers' own nature signs against satellite rainfall and answers in their language."
+version = "0.1.0"
+entry = "/"
+icon = "icon.svg"
+# Where the host app shows the extension: "in_app" (the default) – inside the app – or "external":
+# the app only hands over to the system browser, a jump-off point to your own site.
+# display = "external"
+# Local development port (`appext dev`). 8000 is a common port of the platform's API on a developer machine.
+dev_port = 8100
+
+[extension.name_localized]
+am = "ምልክትና ሰማይ"
+
+[consent]
+# Scopes the person confirms on first open (none of its own). The scope of the service
+# it calls on their behalf belongs under [[services]] below.
+scopes = []
+
+[[services]]
+# The rainfall evidence: the platform's Spatio-Temporal API (STAC, OGC API).
+# Check the real audience and scope names with `appext store services`.
+name = "spatiotemporal"
+audience = "spatio-temporal-api"
+scopes = ["spatio-temporal-read"]
+mode = "user"
